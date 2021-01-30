@@ -10,7 +10,9 @@ public final class SpinningDataCollector extends DataCollector {
   @Override
   protected void schedule(Runnable r, Duration scheduledTime) {
     long start = System.nanoTime();
-    while (System.nanoTime() - start < scheduledTime.toNanos()) {}
+    while (System.nanoTime() - start < scheduledTime.toNanos()) {
+      Thread.onSpinWait();
+    }
     executor.execute(r);
   }
 }
