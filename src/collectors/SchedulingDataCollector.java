@@ -12,12 +12,10 @@ public final class SchedulingDataCollector extends DataCollector {
 
   @Override
   protected void schedule(Runnable r, Duration scheduledTime) {
-    if (scheduledTime.toMillis() > 0) {
-      executor.schedule(r, scheduledTime.toMillis(), MILLISECONDS);
-    } else if (scheduledTime.toNanos() > 0) {
+    if (scheduledTime.toNanos() > 0) {
       executor.schedule(r, scheduledTime.toNanos(), NANOSECONDS);
     } else {
-      executor.submit(r);
+      executor.execute(r);
     }
   }
 }
