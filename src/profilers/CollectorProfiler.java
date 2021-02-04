@@ -25,7 +25,6 @@ public abstract class CollectorProfiler implements ExternalProfiler {
   /** Starts the clerk. */
   @Override
   public final void beforeTrial(BenchmarkParams benchmarkParams) {
-    System.out.println(period);
     collector = newDataCollector(workers, period);
     collector.start();
   }
