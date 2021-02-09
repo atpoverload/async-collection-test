@@ -22,14 +22,14 @@ public abstract class CollectorProfiler implements ExternalProfiler {
 
   protected abstract DataCollector newDataCollector(int workerCount, Duration period);
 
-  /** Starts the clerk. */
+  /** Starts the collector. */
   @Override
   public final void beforeTrial(BenchmarkParams benchmarkParams) {
     collector = newDataCollector(workers, period);
     collector.start();
   }
 
-  /** Stops the clerk. */
+  /** Stops the collector. */
   @Override
   public final Collection<? extends Result> afterTrial(
       BenchmarkResult br, long pid, File stdOut, File stdErr) {
